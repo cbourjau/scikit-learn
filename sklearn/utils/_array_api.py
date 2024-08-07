@@ -45,6 +45,7 @@ def yield_namespaces(include_numpy_namespaces=True):
         "cupy",
         "cupy.array_api",
         "torch",
+        "ndonnx",
     ]:
         if not include_numpy_namespaces and array_namespace in _NUMPY_NAMESPACE_NAMES:
             continue
@@ -894,6 +895,8 @@ def _convert_to_numpy(array, xp):
         return array._array.get()
     elif xp_name in {"array_api_compat.cupy", "cupy"}:  # pragma: nocover
         return array.get()
+    elif xp_name == "ndonnx":
+        return array.to_numpy()
 
     return numpy.asarray(array)
 
