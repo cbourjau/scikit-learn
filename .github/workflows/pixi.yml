@@ -6,18 +6,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pre-commit-checks:
-    name: Pre-commit Checks
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-      - name: Set up pixi
-        uses: prefix-dev/setup-pixi@ba3bb36eb2066252b2363392b7739741bb777659
-      - name: pre-commit
-        run: pixi run pre-commit --color=always --show-diff-on-failure
-
   unit-tests:
     name: pytest
     timeout-minutes: 30
