@@ -38,4 +38,4 @@ jobs:
       - name: Install repository
         run: pixi run postinstall
       - name: Run pytest
-        run: pixi run pytest -v -k array-api
+        run: pixi run pytest -k "array_api" -v
